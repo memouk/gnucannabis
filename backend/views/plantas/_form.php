@@ -18,20 +18,28 @@ use kartik\date\DatePicker;
 
     
     <?= $form->field($model, 'fechaGerminacion')->widget(DatePicker::classname(), [
-    //'language' => 'es',
-    //'dateFormat' => 'yyyy-MM-dd',
+    
+    'pluginOptions' => [
+        'autoclose'=>true,
+        'format' => 'yyyy-mm-dd'
+    ]
 ]) ?>
 
  
 
     <?= $form->field($model, 'fechaPlantacion')->widget(DatePicker::classname(), [
-    //'language' => 'es',
-    //'dateFormat' => 'yyyy-MM-dd',
+    'pluginOptions' => [
+        'autoclose'=>true,
+        'format' => 'yyyy-mm-dd'
+    ]
 ]) ?>
 
 <?= $form->field($model, 'fechaTrasplante')->widget(DatePicker::classname(), [
-    //'language' => 'es',
-    //'dateFormat' => 'yyyy-MM-dd',
+    'pluginOptions' => [
+        'autoclose'=>true,
+        'format' => 'yyyy-mm-dd'
+    ]
+    
 ]) ?>
     
 

@@ -37,7 +37,7 @@ class Plantas extends \yii\db\ActiveRecord
         return [
             [['tipo', 'idjardin', 'idsemilla', 'contenedor', 'idRiego'], 'integer'],
             [['fechaGerminacion', 'fechaPlantacion', 'fechaTrasplante'], 'safe'],
-            [['idsemilla', 'contenedor', 'fechaTrasplante'], 'required'],
+            [['idsemilla', 'contenedor'], 'required'],
             [['descripcion', 'idAbono'], 'string', 'max' => 45],
         ];
     }
