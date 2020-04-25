@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\helpers\ArrayHelper;
 use app\models\TipoJardin;
+use app\models\TipoCultivo;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Jardin */
@@ -31,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
     
 
     <?= 
-   
+    //$c=TipoCultivo::findOne($model->idTipoCultivo)->cultivo;
     DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -39,16 +40,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'descripcion',
             'fecha_creacion',
             'fecha_finalizacion',
-            'tipo_jardin',
-            
-
-            // [
-            //     'attribute'=>'Tipo jard',
-            //     'value'=>$tipojardin1->descripcion,
-            //     'widgetOptions'=>[
-            //       'data'=>ArrayHelper::map(TipoJardin::find()->orderBy('id')->asArray()->all(), 'id', 'descripcion'),
-            //     ]
-            // ]
+            [
+                'attribute'=>'tipo de jardin',
+                'value'=>TipoJardin::findOne($model->tipo_jardin)->descripcion,  
+            ],
+            [
+                'attribute'=>'TipoCultivo',
+                'value'=>TipoCultivo::findOne($model->idTipoCultivo)->cultivo,   
+            ]
         ],
     ]) ?>
 

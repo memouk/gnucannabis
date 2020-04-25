@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\TipoJardin;
+use app\models\TipoCultivo;
+
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -27,7 +30,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'descripcion',
             'fecha_creacion',
             'fecha_finalizacion',
-            'tipo_jardin',
+            [
+                'attribute'=>'tipoJardin',
+                'value'=>'tipoJardin.descripcion',  
+            ],
+            // [
+            //     'attribute'=>'TipoCultivo',
+            //     'value'=>TipoCultivo::findOne(1)->cultivo,   
+            // ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

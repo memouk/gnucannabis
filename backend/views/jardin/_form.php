@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 use yii\jui\DatePicker;
 use yii\helpers\ArrayHelper;
 use app\models\TipoJardin;
+use app\models\TipoCultivo;
 use kartik\file\FileInput;
 
 /* @var $this yii\web\View */
@@ -24,7 +25,11 @@ use kartik\file\FileInput;
 
     <?= $form->field($model, 'tipo_jardin')->dropDownList(
                 ArrayHelper::map(TipoJardin::find()->all(), 'id', 'descripcion'), 
-                ['prompt'=>'Select...']); ?>
+                ['prompt'=>'Select...']); ?>     
+
+    <?= $form->field($model, 'idTipoCultivo')->dropDownList(
+                ArrayHelper::map(TipoCultivo::find()->all(), 'idtipoCultivo', 'cultivo'), 
+                ['prompt'=>'Select...']); ?>            
 
 <?php echo $form->field($model, 'filename')->widget(FileInput::classname(), [
 

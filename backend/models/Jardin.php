@@ -33,8 +33,8 @@ class Jardin extends \yii\db\ActiveRecord
     {
         return [
             [['descripcion', 'fecha_creacion', 'tipo_jardin'], 'required'],
-            [['fecha_creacion', 'fecha_finalizacion'], 'safe'],
-            [['tipo_jardin'], 'integer'],
+            [['fecha_creacion', 'fecha_finalizacion','tipoJardin'], 'safe'],
+            [['tipo_jardin','idTipoCultivo'], 'integer'],
             [['descripcion'], 'string', 'max' => 500],
             [['filename'], "file" , "skipOnEmpty" => true, "extensions" => "png, jpg"],
         ];
@@ -71,16 +71,10 @@ class Jardin extends \yii\db\ActiveRecord
     {
         return new JardinQuery(get_called_class());
     }
-    // public function upload() {
-    //     $skipped = [];
-    //     foreach ( $this->filename as $file ) {
-    //         //var_dump($this->filename->extension);exit;
-    //         if ( !$file->saveAs ( "memo.png" ) ) {
-    //             $skipped[] = "File " . $file->baseName . " was not saved.";
-    //         }
-    //     }
-    //     if ( !empty ( $skipped ) ) {
-    //         Yii::$app->session->setFlash ( 'error' , implode ( "<br>" , $skipped ) );
-    //     }
-    // }
+
+    public function getTipoJardin()
+    {
+        return $this->hasOne(TipoJardin::className(), ['id' => 'tipo_jardin']);
+    }
+ 
 }
