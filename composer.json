@@ -21,7 +21,8 @@
         "dmstr/yii2-adminlte-asset": "^2.4",
         "2amigos/qrcode-library": "~1.1",
         "kartik-v/yii2-widget-fileinput": "dev-master",
-        "kartik-v/yii2-widget-datepicker": "dev-master"
+        "kartik-v/yii2-widget-datepicker": "dev-master",
+        "mdmsoft/yii2-admin": "~2.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

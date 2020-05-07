@@ -4,6 +4,12 @@ namespace backend\models;
 use Yii;
 use yii\base\Model;
 use common\models\User;
+use yii\base\NotSupportedException;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+use yii\web\IdentityInterface;
+
+
 
 /**
  * Signup form
@@ -76,4 +82,5 @@ class SignupForm extends Model
             ->setSubject('Account registration at ' . Yii::$app->name)
             ->send();
     }
+  
 }

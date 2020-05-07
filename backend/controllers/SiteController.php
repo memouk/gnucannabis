@@ -8,6 +8,10 @@ use yii\filters\AccessControl;
 use common\models\LoginForm;
 use backend\models\SignupForm;
 
+
+
+
+
 /**
  * Site controller
  */
@@ -27,7 +31,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index','signup'],
+                        'actions' => ['logout', 'index'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
