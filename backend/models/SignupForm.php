@@ -8,6 +8,7 @@ use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
+use yii\web\UploadedFile;
 
 
 
@@ -58,6 +59,7 @@ class SignupForm extends Model
         $user->username = $this->username;
         $user->email = $this->email;
         $user->setPassword($this->password);
+        //$upload_image = \yii\web\UploadedFile::getInstance($model, 'filename');
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();
         return $user->save() && $this->sendEmail($user);

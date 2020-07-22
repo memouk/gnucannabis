@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\Jardin;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -23,11 +24,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'idplanta',
+            //'idplanta',
             'tipo',
             'fechaGerminacion',
             'fechaPlantacion',
             'idjardin',
+            [
+                'attribute'=>'tipoJardin',
+                'value'=>'jardin.descripcion',  
+            ],
             //'idsemilla',
             //'descripcion',
             //'contenedor',

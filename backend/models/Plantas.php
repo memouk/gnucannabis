@@ -70,4 +70,8 @@ class Plantas extends \yii\db\ActiveRecord
     {
         return new PlantasQuery(get_called_class());
     }
+    public function getJardin()
+    {
+        return $this->hasOne(Jardin::className(), ['idjardin' => 'idjardin']);
+    }
 }
