@@ -1,20 +1,18 @@
 <?php
+
 namespace backend\controllers;
+
 use Yii;
-use app\models\Plantas;
 use app\models\Notas;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\Response; 
-
-
 
 /**
- * PlantasController implements the CRUD actions for Plantas model.
+ * NotasController implements the CRUD actions for Notas model.
  */
-class PlantasController extends Controller
+class NotasController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -32,13 +30,13 @@ class PlantasController extends Controller
     }
 
     /**
-     * Lists all Plantas models.
+     * Lists all Notas models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Plantas::find(),
+            'query' => Notas::find(),
         ]);
 
         return $this->render('index', [
@@ -47,7 +45,7 @@ class PlantasController extends Controller
     }
 
     /**
-     * Displays a single Plantas model.
+     * Displays a single Notas model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -60,16 +58,21 @@ class PlantasController extends Controller
     }
 
     /**
-     * Creates a new Plantas model.
+     * Creates a new Notas model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($idJardin)
     {
-        $model = new Plantas();
+        $model = new Notas();
+        $model->fecha=date('Y-m-d H:i:s');
+        $model->idJardin=$idJardin;
+     
+        
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->idplanta]);
+            //var_dump($model);exit;
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -77,23 +80,8 @@ class PlantasController extends Controller
         ]);
     }
 
-    public function actionNota()
-    {
-        $modelNota = new Notas();
-        $modelNota->tipo=1;
-
-        //var_dump($url);exit;
-        $modelNota->idJardin=$model->id;
-
-        
-
-        return $this->render('create', [
-            'model' => $modelNota,
-        ]);
-    }
-
     /**
-     * Updates an existing Plantas model.
+     * Updates an existing Notas model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -104,7 +92,7 @@ class PlantasController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->idplanta]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -113,7 +101,7 @@ class PlantasController extends Controller
     }
 
     /**
-     * Deletes an existing Plantas model.
+     * Deletes an existing Notas model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -127,15 +115,15 @@ class PlantasController extends Controller
     }
 
     /**
-     * Finds the Plantas model based on its primary key value.
+     * Finds the Notas model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Plantas the loaded model
+     * @return Notas the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Plantas::findOne($id)) !== null) {
+        if (($model = Notas::findOne($id)) !== null) {
             return $model;
         }
 

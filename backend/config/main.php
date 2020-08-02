@@ -10,7 +10,7 @@ return [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
-    'name'=>'Canabis',
+    'name'=>'Cannabis',
     'bootstrap' => ['log'],
     'modules' => [
         'admin' => [

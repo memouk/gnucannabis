@@ -6,15 +6,15 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Seeds');
+$this->title = Yii::t('app', 'Notas');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="seeds-index">
+<div class="notas-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Seeds'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create Notas'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
 
@@ -23,17 +23,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            //'idseed',
-            'name',
-            'bank',
-            'seedType',
-            'purchaseDate',
-            //'feminized',
-            //'yield',
-            //'Climate',
-            //'floweringTime',
-            //'height',
-            //'cbd',
+            'id',
+            'descripcion',
+            'idJardin',
+            'fecha',
+            'tipo',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\models\Jardin;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Plantas */
@@ -17,6 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->idplanta], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('app', 'Notas'), ['notas', 'id' => $model->idplanta], ['class' => 'btn btn-primary']) ?>
         <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->idplanta], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -33,7 +35,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'tipo',
             'fechaGerminacion',
             'fechaPlantacion',
-            'idjardin',
+            [
+                'attribute'=>'ubicacion',
+                'value'=>$model->hasOne(Jardin::className(), ['idjardin' => 'idjardin']),  
+            ],
             'idsemilla',
             'descripcion',
             'contenedor',

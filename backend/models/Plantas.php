@@ -18,6 +18,8 @@ use Yii;
  * @property string $fechaTrasplante
  * @property int $idRiego
  * @property string $idAbono
+ * @property string $fechaFloracion
+ * @property string $fechaCosecha
  */
 class Plantas extends \yii\db\ActiveRecord
 {
@@ -36,9 +38,9 @@ class Plantas extends \yii\db\ActiveRecord
     {
         return [
             [['tipo', 'idjardin', 'idsemilla', 'contenedor', 'idRiego'], 'integer'],
-            [['fechaGerminacion', 'fechaPlantacion', 'fechaTrasplante'], 'safe'],
+            [['fechaGerminacion', 'fechaPlantacion', 'fechaTrasplante','fechaFloracion','fechaCosecha'], 'safe'],
             [['idsemilla', 'contenedor'], 'required'],
-            [['descripcion', 'idAbono'], 'string', 'max' => 45],
+            [['descripcion', 'idAbono'], 'string', 'max' => 500],
         ];
     }
 
@@ -49,16 +51,18 @@ class Plantas extends \yii\db\ActiveRecord
     {
         return [
             'idplanta' => Yii::t('app', 'Idplanta'),
-            'tipo' => Yii::t('app', 'Tipo'),
+            'tipo' => Yii::t('app', 'Sexo'),
             'fechaGerminacion' => Yii::t('app', 'Fecha Germinacion'),
             'fechaPlantacion' => Yii::t('app', 'Fecha Plantacion'),
-            'idjardin' => Yii::t('app', 'Idjardin'),
-            'idsemilla' => Yii::t('app', 'Idsemilla'),
+            'idjardin' => Yii::t('app', 'Jardin'),
+            'idsemilla' => Yii::t('app', 'Semilla'),
             'descripcion' => Yii::t('app', 'Descripcion'),
             'contenedor' => Yii::t('app', 'Contenedor'),
             'fechaTrasplante' => Yii::t('app', 'Fecha Trasplante'),
             'idRiego' => Yii::t('app', 'Id Riego'),
             'idAbono' => Yii::t('app', 'Id Abono'),
+            'fechaFloracion' => Yii::t('app', 'Fecha inicio Floracion'),
+            'fechaCosecha' => Yii::t('app', 'Fecha Cosecha'),
         ];
     }
 
@@ -73,5 +77,9 @@ class Plantas extends \yii\db\ActiveRecord
     public function getJardin()
     {
         return $this->hasOne(Jardin::className(), ['idjardin' => 'idjardin']);
+    }
+    public function getSexo()
+    {
+        return $this->hasOne(Sexo::className(), ['idsexo' => 'tipo']);
     }
 }

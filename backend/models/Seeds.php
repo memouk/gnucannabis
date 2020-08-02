@@ -48,10 +48,10 @@ class Seeds extends \yii\db\ActiveRecord
     {
         return [
             'idseed' => Yii::t('app', 'Idseed'),
-            'name' => Yii::t('app', 'Name'),
-            'bank' => Yii::t('app', 'Bank'),
-            'seedType' => Yii::t('app', 'Seed Type'),
-            'purchaseDate' => Yii::t('app', 'Purchase Date'),
+            'name' => Yii::t('app', 'Nombre'),
+            'bank' => Yii::t('app', 'Banco'),
+            'seedType' => Yii::t('app', 'tipo Semilla'),
+            'purchaseDate' => Yii::t('app', 'fecha de compra'),
             'feminized' => Yii::t('app', 'Feminized'),
             'yield' => Yii::t('app', 'Yield'),
             'Climate' => Yii::t('app', 'Climate'),

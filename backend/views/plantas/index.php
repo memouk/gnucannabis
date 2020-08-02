@@ -10,7 +10,7 @@ use app\models\Jardin;
 $this->title = Yii::t('app', 'Plantas');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="plantas-index">
+<div class="table-responsive">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -25,12 +25,17 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             //'idplanta',
-            'tipo',
-            'fechaGerminacion',
-            'fechaPlantacion',
-            'idjardin',
             [
-                'attribute'=>'tipoJardin',
+                'attribute'=>'tipo',
+                'value'=>'sexo.sexo',  
+            ],
+            'fechaGerminacion',
+            'fechaFloracion',
+            'fechaCosecha',
+            //'fechaPlantacion',
+            //'idjardin',
+            [
+                'attribute'=>'ubicacion',
                 'value'=>'jardin.descripcion',  
             ],
             //'idsemilla',
@@ -40,7 +45,15 @@ $this->params['breadcrumbs'][] = $this->title;
             //'idRiego',
             //'idAbono',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+            'template' => '{view} {update} {delete} {nota} ',
+            'buttons' => [
+                'nota' => function($url, $model, $key) {     // render your custom button
+                    
+                    return Html::a('<span class="glyphicon glyphicon-comment"></span>',['notas/create', 'idJardin' => $model->idplanta]);
+                }
+            ]        
+        ],
         ],
     ]); ?>
 
