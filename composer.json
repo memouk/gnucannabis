@@ -18,7 +18,7 @@
         "yiisoft/yii2": "~2.0.14",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
-        "dmstr/yii2-adminlte-asset": "^2.4",
+        "memouk/yii2-adminlte-asset": "^1.1",
         "2amigos/qrcode-library": "~1.1",
         "kartik-v/yii2-widget-fileinput": "dev-master",
         "kartik-v/yii2-widget-datepicker": "dev-master",
