@@ -63,9 +63,6 @@ return [
                 ],
             ],
        ],
-       'authManager' => [
-        'class' => 'yii\rbac\DbManager', // or use 'yii\rbac\DbManager'
-       ],
        'qr' => [
         'class' => '\Da\QrCode\Component\QrCodeComponent',
         // ... you can configure more properties of the component here
