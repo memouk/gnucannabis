@@ -3,16 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use app\models\Plantas;
+use app\models\Cultivos;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PlantasController implements the CRUD actions for Plantas model.
+ * CultivosController implements the CRUD actions for Cultivos model.
  */
-class PlantasController extends Controller
+class CultivosController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,13 +30,13 @@ class PlantasController extends Controller
     }
 
     /**
-     * Lists all Plantas models.
+     * Lists all Cultivos models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Plantas::find(),
+            'query' => Cultivos::find(),
         ]);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class PlantasController extends Controller
     }
 
     /**
-     * Displays a single Plantas model.
+     * Displays a single Cultivos model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +58,13 @@ class PlantasController extends Controller
     }
 
     /**
-     * Creates a new Plantas model.
+     * Creates a new Cultivos model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Plantas();
+        $model = new Cultivos();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -76,7 +76,7 @@ class PlantasController extends Controller
     }
 
     /**
-     * Updates an existing Plantas model.
+     * Updates an existing Cultivos model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +96,7 @@ class PlantasController extends Controller
     }
 
     /**
-     * Deletes an existing Plantas model.
+     * Deletes an existing Cultivos model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +110,15 @@ class PlantasController extends Controller
     }
 
     /**
-     * Finds the Plantas model based on its primary key value.
+     * Finds the Cultivos model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Plantas the loaded model
+     * @return Cultivos the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Plantas::findOne($id)) !== null) {
+        if (($model = Cultivos::findOne($id)) !== null) {
             return $model;
         }
 

@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Plantas */
+/* @var $model app\models\Semillas */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Plantas', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Semillas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="plantas-view">
+<div class="semillas-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -30,22 +30,23 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'codigo_qr',
-            'cultivo_id',
-            'etapa_id',
-            'altura',
-            'peso',
-            'diametro_tallo',
-            'num_hojas',
-            'color_hojas',
-            'tipo_origen',
-            'planta_madre_id',
-            'proveedor',
-            'fecha_germinacion',
-            'fecha_plantacion',
-            'fecha_floracion',
-            'fecha_cosecha',
-            'semilla_id',
+            'nombre',
+            'cepa',
+            'tipo_semilla',
+            'tipo_cannabis',
+            'porcentaje_thc',
+            'porcentaje_cbd',
+            'tiempo_floracion',
+            'rendimiento_interior',
+            'rendimiento_exterior',
+            'zonas_climaticas',
+            'efectos',
+            'sabor',
+            'aroma',
+            'dificultad_cultivo',
+            'tipo_strain',
+            'calificacion',
+            'descripcion_strain:ntext',
         ],
     ]) ?>
 

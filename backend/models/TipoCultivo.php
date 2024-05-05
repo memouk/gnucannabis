@@ -1,7 +1,9 @@
 <?php
 
+
 namespace app\models;
 
+use yii\helpers\ArrayHelper;
 use Yii;
 
 /**
@@ -17,7 +19,7 @@ class TipoCultivo extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%tipoCultivo}}';
+        return '{{%tipos_cultivo}}';
     }
 
     /**
@@ -51,5 +53,10 @@ class TipoCultivo extends \yii\db\ActiveRecord
     public static function find()
     {
         return new TipoCultivoQuery(get_called_class());
+    }
+
+    public static function getListData()
+    {
+        return ArrayHelper::map(self::find()->all(), 'id', 'nombre');
     }
 }

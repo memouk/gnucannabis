@@ -13,7 +13,7 @@
                 <img src="<?=$assetDir?>/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block">Luis Gonzalez</a>
             </div>
         </div>
 
@@ -44,16 +44,16 @@
                         'label' => 'Cultivos',
                         'icon' => 'leaf',
                         'items' => [
-                            ['label' => 'Ver Cultivos', 'url' => ['/cultivo/index']],
-                            ['label' => 'Nuevo Cultivo', 'url' => ['/cultivo/create']],
+                            ['label' => 'Ver Cultivos', 'url' => ['/cultivos/index']],
+                            ['label' => 'Nuevo Cultivo', 'url' => ['/cultivos/create']],
                         ]
                     ],
                     [
                         'label' => 'Plantas',
                         'icon' => 'seedling',
                         'items' => [
-                            ['label' => 'Ver Plantas', 'url' => ['/planta/index']],
-                            ['label' => 'Nueva Planta', 'url' => ['/planta/create']],
+                            ['label' => 'Ver Plantas', 'url' => ['/plantas/index']],
+                            ['label' => 'Nueva Planta', 'url' => ['/plantas/create']],
                         ]
                     ],
                     [
@@ -79,6 +79,7 @@
                     ],
                     ['label' => 'Gii', 'icon' => 'file-code', 'url' => ['/gii'], 'target' => '_blank'],
                     ['label' => 'Debug', 'icon' => 'bug', 'url' => ['/debug'], 'target' => '_blank'],
+                    ['label' => 'Permisos', 'icon' => 'fas fa-user-lock', 'url' => ['/admin'], 'target' => '_blank'],
                 ],
             ]);
             ?>

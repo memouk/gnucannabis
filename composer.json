@@ -22,7 +22,9 @@
         "kartik-v/yii2-widget-fileinput": "dev-master",
         "kartik-v/yii2-widget-datepicker": "dev-master",
         "mdmsoft/yii2-admin": "~2.0",
-        "hail812/yii2-adminlte3": "~1.1"
+        "hail812/yii2-adminlte3": "~1.1",
+        "kartik-v/yii2-widget-select2": "^2.2",
+        "yiisoft/yii2-jui": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

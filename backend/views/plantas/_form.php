@@ -1,89 +1,115 @@
 <?php
-
+use app\models\Cultivos;
+use app\models\EtapasPlanta;
+use app\models\Plantas;
+use app\models\Semillas;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-//use yii\widgets\DatePicker;
-use kartik\date\DatePicker;
+use yii\jui\DatePicker;
 use yii\helpers\ArrayHelper;
-use app\models\Sexo;
-use app\models\Jardin;
-use app\models\Seeds;
-use app\models\Contenedores;
 /* @var $this yii\web\View */
 /* @var $model app\models\Plantas */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
 <div class="plantas-form">
-
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'codigo_qr')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'cultivo_id')->dropDownList(
+        ArrayHelper::map(Cultivos::find()->all(), 'id', 'nombre'),
+        ['prompt' => 'Select...']
+    ); ?>
 
-    
-    <?= $form->field($model, 'fechaGerminacion')->widget(DatePicker::classname(), [
-    
-    'pluginOptions' => [
-        'autoclose'=>true,
-        'format' => 'yyyy-mm-dd'
-    ]
-]) ?>
+    <?= $form->field($model, 'etapa_id')->dropDownList(
+        ArrayHelper::map(EtapasPlanta::find()->all(), 'id', 'nombre'),
+        ['prompt' => 'Select...']
+    ); ?>
 
- 
+    <?= $form->field($model, 'altura')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'peso')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'diametro_tallo')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'num_hojas')->textInput() ?>
+    <?= $form->field($model, 'color_hojas')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'fechaPlantacion')->widget(DatePicker::classname(), [
-    'pluginOptions' => [
-        'autoclose'=>true,
-        'format' => 'yyyy-mm-dd'
-    ]
-]) ?>
+    <?= $form->field($model, 'tipo_origen')->dropDownList([
+        'Semilla' => 'Semilla',
+        'Esqueje' => 'Esqueje',
+        'Desconocido' => 'Desconocido',
+    ], ['prompt' => '', 'id' => 'tipo_origen']) ?>
 
-<?= $form->field($model, 'fechaTrasplante')->widget(DatePicker::classname(), [
-    'pluginOptions' => [
-        'autoclose'=>true,
-        'format' => 'yyyy-mm-dd'
-    ]
-    
-]) ?>
-<?= $form->field($model, 'fechaFloracion')->widget(DatePicker::classname(), [
-    'pluginOptions' => [
-        'autoclose'=>true,
-        'format' => 'yyyy-mm-dd'
-    ]
-    
-]) ?>
+    <div id="campo_semilla" style="display: none;">
+        <?= $form->field($model, 'semilla_id')->dropDownList(
+            ArrayHelper::map(Semillas::find()->all(), 'id', 'nombre'),
+            ['prompt' => 'Select...']
+        ); ?>
+    </div>
 
-<?= $form->field($model, 'tipo')->dropDownList(
-                ArrayHelper::map(Sexo::find()->all(), 'idsexo', 'sexo'), 
-                ['prompt'=>'Select...']); ?> 
-<?= $form->field($model, 'fechaCosecha')->widget(DatePicker::classname(), [
-    'pluginOptions' => [
-        'autoclose'=>true,
-        'format' => 'yyyy-mm-dd'
-    ]
-    
-]) ?>
-    
+    <div id="campo_planta_madre" style="display: none;">
+        <?= $form->field($model, 'planta_madre_id')->dropDownList(
+            ArrayHelper::map(Plantas::find()->all(), 'id', 'id'),
+            ['prompt' => 'Select...']
+        ); ?>
+    </div>
 
-    <?= $form->field($model, 'idjardin')->dropDownList(
-                ArrayHelper::map(Jardin::find()->all(), 'idjardin', 'descripcion'), 
-                ['prompt'=>'Select...']); ?> 
+    <?= $form->field($model, 'proveedor')->textInput(['maxlength' => true]) ?>
 
-   <?= $form->field($model, 'idsemilla')->dropDownList(
-                ArrayHelper::map(Seeds::find()->all(), 'idseed', 'name'), 
-                ['prompt'=>'Select...']); ?>
+    <?= $form->field($model, 'fecha_germinacion')->widget(\yii\jui\DatePicker::className(), [
+        'language' => 'es',
+        'dateFormat' => 'yyyy-MM-dd',
+        'options' => [
+            'class' => 'form-control',
+        ],
+    ]) ?>
 
-    <?= $form->field($model, 'descripcion')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'contenedor')->dropDownList(
-                ArrayHelper::map(Contenedores::find()->all(), 'id', 'descripcion'), 
-                ['prompt'=>'Select...']); ?>
+    <?= $form->field($model, 'fecha_plantacion')->widget(\yii\jui\DatePicker::className(), [
+        'language' => 'es',
+        'dateFormat' => 'yyyy-MM-dd',
+        'options' => [
+            'class' => 'form-control',
+        ],
+    ]) ?>
 
-   
+    <?= $form->field($model, 'fecha_floracion')->widget(\yii\jui\DatePicker::className(), [
+        'language' => 'es',
+        'dateFormat' => 'yyyy-MM-dd',
+        'options' => [
+            'class' => 'form-control',
+        ],
+    ]) ?>
+
+    <?= $form->field($model, 'fecha_cosecha')->widget(\yii\jui\DatePicker::className(), [
+        'language' => 'es',
+        'dateFormat' => 'yyyy-MM-dd',
+        'options' => [
+            'class' => 'form-control',
+        ],
+    ]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
-
 </div>
+
+<?php
+$script = <<< JS
+    $('#tipo_origen').change(function() {
+        var selectedValue = $(this).val();
+
+        // Ocultar ambos campos por defecto
+        $('#campo_semilla').hide();
+        $('#campo_planta_madre').hide();
+
+        // Mostrar el campo correspondiente según el valor seleccionado
+        if (selectedValue === 'Semilla') {
+            $('#campo_semilla').show();
+        } else if (selectedValue === 'Esqueje') {
+            $('#campo_planta_madre').show();
+        }
+    });
+JS;
+$this->registerJs($script);
+?>
