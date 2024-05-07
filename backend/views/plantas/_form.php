@@ -5,6 +5,7 @@ use app\models\Plantas;
 use app\models\Semillas;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\select2\Select2;
 use yii\jui\DatePicker;
 use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
@@ -17,15 +18,25 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'codigo_qr')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'cultivo_id')->dropDownList(
-        ArrayHelper::map(Cultivos::find()->all(), 'id', 'nombre'),
-        ['prompt' => 'Select...']
-    ); ?>
+    <?=
+    $form->field($model, 'cultivo_id')->widget(Select2::classname(), [
+        'data' => ArrayHelper::map(Cultivos::find()->all(), 'id', 'nombre'),
+        'options' => ['placeholder' => 'Selecciona un cultivo...'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ]);
+?>
 
-    <?= $form->field($model, 'etapa_id')->dropDownList(
-        ArrayHelper::map(EtapasPlanta::find()->all(), 'id', 'nombre'),
-        ['prompt' => 'Select...']
-    ); ?>
+<?=
+    $form->field($model, 'etapa_id')->widget(Select2::classname(), [
+        'data' => ArrayHelper::map(EtapasPlanta::find()->all(), 'id', 'nombre'),
+        'options' => ['placeholder' => 'Selecciona una etapa...'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ]);
+?>
 
     <?= $form->field($model, 'altura')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'peso')->textInput(['maxlength' => true]) ?>
@@ -55,37 +66,47 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'proveedor')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'fecha_germinacion')->widget(\yii\jui\DatePicker::className(), [
-        'language' => 'es',
-        'dateFormat' => 'yyyy-MM-dd',
-        'options' => [
-            'class' => 'form-control',
-        ],
-    ]) ?>
+    
+    <?= $form->field($model, 'fecha_germinacion')->widget(\kartik\date\DatePicker::className(), [
+    'options' => ['placeholder' => 'Selecciona una fecha ...'],
+    'pluginOptions' => [
+        'format' => 'yyyy-mm-dd', // Formato de la fecha
+        'todayHighlight' => true, // Resaltar la fecha actual
+        'autoclose' => true // Cerrar el calendario después de seleccionar una fecha
+    ]
+]) ?>
 
-    <?= $form->field($model, 'fecha_plantacion')->widget(\yii\jui\DatePicker::className(), [
-        'language' => 'es',
-        'dateFormat' => 'yyyy-MM-dd',
-        'options' => [
-            'class' => 'form-control',
-        ],
-    ]) ?>
+    
 
-    <?= $form->field($model, 'fecha_floracion')->widget(\yii\jui\DatePicker::className(), [
-        'language' => 'es',
-        'dateFormat' => 'yyyy-MM-dd',
-        'options' => [
-            'class' => 'form-control',
-        ],
-    ]) ?>
+<?= $form->field($model, 'fecha_plantacion')->widget(\kartik\date\DatePicker::className(), [
+    'options' => ['placeholder' => 'Selecciona una fecha ...'],
+    'pluginOptions' => [
+        'format' => 'yyyy-mm-dd', // Formato de la fecha
+        'todayHighlight' => true, // Resaltar la fecha actual
+        'autoclose' => true // Cerrar el calendario después de seleccionar una fecha
+    ]
+]) ?>
 
-    <?= $form->field($model, 'fecha_cosecha')->widget(\yii\jui\DatePicker::className(), [
-        'language' => 'es',
-        'dateFormat' => 'yyyy-MM-dd',
-        'options' => [
-            'class' => 'form-control',
-        ],
-    ]) ?>
+    
+
+<?= $form->field($model, 'fecha_floracion')->widget(\kartik\date\DatePicker::className(), [
+    'options' => ['placeholder' => 'Selecciona una fecha ...'],
+    'pluginOptions' => [
+        'format' => 'yyyy-mm-dd', // Formato de la fecha
+        'todayHighlight' => true, // Resaltar la fecha actual
+        'autoclose' => true // Cerrar el calendario después de seleccionar una fecha
+    ]
+]) ?>
+
+    
+    <?= $form->field($model, 'fecha_cosecha')->widget(\kartik\date\DatePicker::className(), [
+    'options' => ['placeholder' => 'Selecciona una fecha ...'],
+    'pluginOptions' => [
+        'format' => 'yyyy-mm-dd', // Formato de la fecha
+        'todayHighlight' => true, // Resaltar la fecha actual
+        'autoclose' => true // Cerrar el calendario después de seleccionar una fecha
+    ]
+]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
