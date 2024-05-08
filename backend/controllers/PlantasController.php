@@ -8,6 +8,7 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * PlantasController implements the CRUD actions for Plantas model.
@@ -65,7 +66,7 @@ class PlantasController extends Controller
     public function actionCreate()
     {
         $model = new Plantas();
-
+        $model->filename = UploadedFile::getInstance($model, 'filename');
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -85,8 +86,18 @@ class PlantasController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model->filename = UploadedFile::getInstance($model, 'filename');
 
+       
+        
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            
+            $fileName = $model->filename->baseName . '.' . $model->filename->extension;
+            $filePath = '../web/uploads/' . $fileName;
+            if ($model->filename->saveAs($filePath)) {
+                // Guardar la ruta del archivo en el modelo
+                $model->filename = '/uploads/' . $fileName;
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

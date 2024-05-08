@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use Da\QrCode\QrCode;
+use kartik\file\FileInput;
 
 
 $qrCode = (new QrCode('http://localhost:8080/index.php?r=plantas%2Fview&id='.$model->id))
@@ -34,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-
+    
     <?= DetailView::widget([
     'model' => $model,
     'attributes' => [
@@ -71,6 +72,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'label' => 'Código QR',
             'format' => 'raw',
             'value' => Html::img('data:image/png;base64,' . base64_encode($qrCodePng), ['class' => 'img-responsive']),
+        ],
+        [
+            'label' => 'Imagen',
+            'format' => 'raw',
+            'value' => $model->filename ? Html::img('@web/uploads/' . $model->filename, ['class' => 'img-responsive']) : 'No hay imagen cargada',
         ],
     ],
 ]) ?>

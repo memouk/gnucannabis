@@ -8,6 +8,8 @@ use yii\widgets\ActiveForm;
 use kartik\select2\Select2;
 use yii\jui\DatePicker;
 use yii\helpers\ArrayHelper;
+use kartik\file\FileInput;
+use yii\helpers\Url
 /* @var $this yii\web\View */
 /* @var $model app\models\Plantas */
 /* @var $form yii\widgets\ActiveForm */
@@ -107,6 +109,28 @@ use yii\helpers\ArrayHelper;
         'autoclose' => true // Cerrar el calendario después de seleccionar una fecha
     ]
 ]) ?>
+<?= $form->field($model, 'filename')->widget(FileInput::classname(), [
+    'options' => ['accept' => 'image/*'], // Aceptar solo archivos de imagen
+    'pluginOptions' => [
+        'allowedFileExtensions' => ['jpg', 'png'], // Extensiones de archivo permitidas
+        'showUpload' => false, // Ocultar el botón de subida
+        'uploadUrl' => Url::to(['/backend/web/uploads']),
+        'maxFileCount' => 10
+    ]
+]) ?>
+<?php
+    if (!empty($model->filename)) {
+        echo '<div class="file-preview-images">';
+        $files = FileInput::getFilesFromDatabase($model, 'filename');
+        foreach ($files as $file) {
+            $path = Yii::getAlias('/backend/web/uploads' . $file->path);
+            echo '<div class="file-preview-frame">
+                    ' . Html::img($path, ['class' => 'file-preview-image']) . '
+                  </div>';
+        }
+        echo '</div>';
+    }
+?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
