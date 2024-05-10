@@ -13,6 +13,9 @@ return [
     'name'=>'Cannabis',
     'bootstrap' => ['log'],
     'modules' => [
+        'api' => [
+            'class' => 'backend\modules\api',
+        ],
         'admin' => [
             'class' => 'mdm\admin\Module',
             'layout' => 'left-menu',    
@@ -89,13 +92,13 @@ return [
             'errorAction' => 'site/error',
         ],
         
-        /*
+        
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
-        ],*/
+        ],
         
     ],
     'as access' => [
