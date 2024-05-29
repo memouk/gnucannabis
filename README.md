@@ -74,5 +74,5 @@ composer install
 
 launch:
 ```sh
-php yii serve --docroot="backend/web" && php yii serve --docroot="frontend/web" -p 8081 
+php yii serve --docroot="backend/web" & php yii serve --docroot="frontend/web" -p 8081 
 ```
