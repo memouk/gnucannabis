@@ -57,7 +57,10 @@ return [
     ],
     'components' => [
         'request' => [
-            'csrfParam' => '_csrf-backend',
+           //'csrfParam' => '_csrf-backend',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ]
         ],
         'view' => [
             'theme' => [
@@ -93,12 +96,12 @@ return [
         ],
         
         
-       /* 'urlManager' => [
+       'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
-        ],*/
+        ],
         
     ],
     'as access' => [
@@ -106,6 +109,7 @@ return [
         'allowActions' => [
             'site/*',
             'admin/*',
+            'api/*',
             'some-controller/some-action',
             // The actions listed here will be allowed to everyone including guests.
             // So, 'admin/*' should not appear here in the production, of course.

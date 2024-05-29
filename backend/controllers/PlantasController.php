@@ -88,7 +88,7 @@ class PlantasController extends Controller
         $model = $this->findModel($id);
         $model->filename = UploadedFile::getInstance($model, 'filename');
 
-       
+        
         
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             

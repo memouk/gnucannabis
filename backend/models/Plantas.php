@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\web\IdentityInterface;
 
 /**
  * This is the model class for table "plantas".
@@ -34,8 +35,40 @@ use Yii;
  * @property Plantas[] $plantas
  * @property Procedimientos[] $procedimientos
  */
-class Plantas extends \yii\db\ActiveRecord
+class Plantas extends \yii\db\ActiveRecord 
 {
+    /**
+     * {@inheritdoc}
+     */
+    public static function findIdentity($id)
+    {
+        // TODO: Implement findIdentity() method.
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getId()
+    {
+        // TODO: Implement getId() method.
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAuthKey()
+    {
+        // TODO: Implement getAuthKey() method.
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function validateAuthKey($authKey)
+    {
+        // TODO: Implement validateAuthKey() method.
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -43,7 +76,10 @@ class Plantas extends \yii\db\ActiveRecord
     {
         return 'plantas';
     }
-
+    // public static function findIdentityByAccessToken($token, $type = null)
+    // {
+    //     return static::findOne(['auth_key' => $token]);
+    // }
     /**
      * {@inheritdoc}
      */
