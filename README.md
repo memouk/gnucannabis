@@ -58,3 +58,21 @@ frontend
 vendor/                  contains dependent 3rd-party packages
 environments/            contains environment-based overrides
 ```
+## configuracion
+
+configuracion de php
+```sh
+php init
+```
+
+instalar las dependencias
+```sh
+composer install
+```
+
+> en caso de error ejecutar: `composer install --ignore-platform-req=ext-gd`
+
+launch:
+```sh
+php yii serve --docroot="backend/web" && php yii serve --docroot="frontend/web" -p 8081 
+```
