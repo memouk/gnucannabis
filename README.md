@@ -1,66 +1,60 @@
 <p align="center">
-    <a href="https://github.com/yiisoft" target="_blank">
-        <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
+    <a href="https://github.com/memouk/gnucannabis" target="_blank">
+        <img src="https://avatars.githubusercontent.com/u/62582844?s=200&v=4" height="100px">
     </a>
-    <h1 align="center">Yii 2 Advanced Project Template</h1>
+    <h1 align="center">GNUCannabis</h1>
     <br>
 </p>
 
-Yii 2 Advanced Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
-developing complex Web applications with multiple tiers.
+GNUCannabis es una plataforma de software libre para la gestión de cultivos de cannabis, desarrollada con el marco Yii 2. Proporciona una solución integral para el registro, seguimiento y análisis de los cultivos. La plataforma incluye tres niveles: frontend, backend y consola, cada uno de los cuales es una aplicación Yii separada. El proyecto está diseñado para trabajar en un entorno de desarrollo en equipo. Admite el despliegue de la aplicación en diferentes entornos.
 
-The template includes three tiers: front end, back end, and console, each of which
-is a separate Yii application.
-
-The template is designed to work in a team development environment. It supports
-deploying the application in different environments.
-
-Documentation is at [docs/guide/README.md](docs/guide/README.md).
+La documentación está en [docs/guide/README.md](docs/guide/README.md).
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-advanced.svg)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
 [![Total Downloads](https://img.shields.io/packagist/dt/yiisoft/yii2-app-advanced.svg)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
 [![Build Status](https://travis-ci.org/yiisoft/yii2-app-advanced.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-app-advanced)
 
-DIRECTORY STRUCTURE
+ESTRUCTURA DE DIRECTORIOS
 -------------------
 
 ```
 common
-    config/              contains shared configurations
-    mail/                contains view files for e-mails
-    models/              contains model classes used in both backend and frontend
-    tests/               contains tests for common classes    
+    config/              contiene configuraciones compartidas
+    mail/                contiene archivos de vista para correos electrónicos
+    models/              contiene clases de modelo utilizadas en backend y frontend
+    tests/               contiene pruebas para clases comunes    
 console
-    config/              contains console configurations
-    controllers/         contains console controllers (commands)
-    migrations/          contains database migrations
-    models/              contains console-specific model classes
-    runtime/             contains files generated during runtime
+    config/              contiene configuraciones de consola
+    controllers/         contiene controladores de consola (comandos)
+    migrations/          contiene migraciones de base de datos
+    models/              contiene clases de modelo específicas de la consola
+    runtime/             contiene archivos generados en tiempo de ejecución
 backend
-    assets/              contains application assets such as JavaScript and CSS
-    config/              contains backend configurations
-    controllers/         contains Web controller classes
-    models/              contains backend-specific model classes
-    runtime/             contains files generated during runtime
-    tests/               contains tests for backend application    
-    views/               contains view files for the Web application
-    web/                 contains the entry script and Web resources
+    assets/              contiene activos de la aplicación como JavaScript y CSS
+    config/              contiene configuraciones de backend
+    controllers/         contiene clases de controlador Web
+    models/              contiene clases de modelo específicas de backend
+    runtime/             contiene archivos generados en tiempo de ejecución
+    tests/               contiene pruebas para la aplicación backend    
+    views/               contiene archivos de vista para la aplicación Web
+    web/                 contiene el script de entrada y recursos Web
 frontend
-    assets/              contains application assets such as JavaScript and CSS
-    config/              contains frontend configurations
-    controllers/         contains Web controller classes
-    models/              contains frontend-specific model classes
-    runtime/             contains files generated during runtime
-    tests/               contains tests for frontend application
-    views/               contains view files for the Web application
-    web/                 contains the entry script and Web resources
-    widgets/             contains frontend widgets
-vendor/                  contains dependent 3rd-party packages
-environments/            contains environment-based overrides
+    assets/              contiene activos de la aplicación como JavaScript y CSS
+    config/              contiene configuraciones de frontend
+    controllers/         contiene clases de controlador Web
+    models/              contiene clases de modelo específicas de frontend
+    runtime/             contiene archivos generados en tiempo de ejecución
+    tests/               contiene pruebas para la aplicación frontend
+    views/               contiene archivos de vista para la aplicación Web
+    web/                 contiene el script de entrada y recursos Web
+    widgets/             contiene widgets de frontend
+vendor/                  contiene paquetes dependientes de terceros
+environments/            contiene sobreescrituras basadas en entorno
 ```
-## configuracion
 
-configuracion de php
+## configuración
+
+configuración de php
 ```sh
 php init
 ```
@@ -72,7 +66,7 @@ composer install
 
 > en caso de error ejecutar: `composer install --ignore-platform-req=ext-gd`
 
-launch:
+iniciar:
 ```sh
-php yii serve --docroot="backend/web" & php yii serve --docroot="frontend/web" -p 8081 
+php yii serve --docroot="backend/web" & php yii serve --docroot="frontend/web" -p 8081
 ```
